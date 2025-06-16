@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Front End Web Development",
+    "description": "Learn HTML, CSS, and JavaScript from scratch.",
+    "weeks": 8,
+    "tuition": 8000,
+    "minimumSkill": "beginner",
+    "scholarshipsAvailable": true
+  }
+]
