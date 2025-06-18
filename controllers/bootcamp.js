@@ -8,40 +8,94 @@ const asyncHandler = require('../middleware/async');
 // public 
 exports.getBootcamps = asyncHandler( async (req,res,next) => {
 
-        let queryObj = {};
-        for (let key in req.query) {
-            if (key.includes('[') && key.includes(']')) {
-                // Advanced query: field[operator]
-                const field = key.split('[')[0];
-                const op = key.match(/\[(.*)\]/)[1];
-                const mongoOp = `$${op}`;
-                if (!queryObj[field]) queryObj[field] = {};
-                // Handle $in as array
-                if (mongoOp === '$in') {
-                    queryObj[field][mongoOp] = Array.isArray(req.query[key]) ? req.query[key] : [req.query[key]];
-                } else {
-                    // Convert to number if possible
-                    const val = isNaN(req.query[key]) ? req.query[key] : Number(req.query[key]);
-                    queryObj[field][mongoOp] = val;
-                }
+    // Create a copy of req.query so the original is not modified
+    const reqQuery = { ...req.query };
+
+    // Fields to exclude from filtering
+    const removeFields = ['select', 'sort','limit','page'];
+    removeFields.forEach(param => delete reqQuery[param]);
+
+    // Build the query object for advanced filtering
+    let queryObj = {};
+    for (let key in reqQuery) {
+        if (key.includes('[') && key.includes(']')) {
+            const field = key.split('[')[0];
+            const op = key.match(/\[(.*)\]/)[1];
+            const mongoOp = `$${op}`;
+            if (!queryObj[field]) queryObj[field] = {};
+            if (mongoOp === '$in') {
+                queryObj[field][mongoOp] = Array.isArray(reqQuery[key]) ? reqQuery[key] : [reqQuery[key]];
             } else {
-                // Simple query
-                queryObj[key] = req.query[key];
+                const val = isNaN(reqQuery[key]) ? reqQuery[key] : Number(reqQuery[key]);
+                queryObj[field][mongoOp] = val;
             }
+        } else {
+            queryObj[key] = reqQuery[key];
         }
+    }
 
-        // Debug: log the parsed query
-        console.log('Parsed Query:', queryObj);
+    // Build the initial query
+    let query = Bootcamp.find(queryObj);
 
-        const bootcamps = await Bootcamp.find(queryObj);
-        // Debug: log the number of results
-        console.log('Bootcamps found:', bootcamps.length);
+    // Handle select fields
+    if (req.query.select) {
+        const fields = req.query.select.split(',').join(' ');
+        query = query.select(fields);
+    }
 
-        res.status(200).json({
-            success: true,
-            count: bootcamps.length,
-            data: bootcamps
-        });
+    // Handle sort
+    if (req.query.sort) {
+        const sortBy = req.query.sort.split(',').join(' ');
+        query = query.sort(sortBy);
+    } else {
+        query = query.sort('-createdAt');
+    }
+
+    // Debug: log the parsed query
+    console.log('Parsed Query:', queryObj);
+
+    // pagination
+    const page = parseInt(req.query.page, 10) || 1;
+    const limit = parseInt(req.query.limit, 10) || 50;
+    const startIndex = (page -1) * limit;
+    const endIndex = page * limit;
+    const total = await Bootcamp.countDocuments();
+
+    query = query.skip(startIndex).limit(limit);
+
+
+    const bootcamps = await query;
+
+    // Pagination result
+    const pagination ={};
+
+    if(endIndex < total)
+    {
+            pagination.next = 
+            {
+                page: page+1,
+                limit
+            }
+    }
+    
+    if(startIndex > 0)
+    {
+        pagination.prev = {
+            page: page-1,
+            limit
+        }
+    }
+
+
+    // Debug: log the number of results
+    console.log('Bootcamps found:', bootcamps.length);
+
+    res.status(200).json({
+        success: true,
+        count: bootcamps.length,
+        pagination,
+        data: bootcamps
+    });
 });
 
 
