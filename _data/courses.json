@@ -5,6 +5,64 @@
     "weeks": 8,
     "tuition": 8000,
     "minimumSkill": "beginner",
-    "scholarshipsAvailable": true
+    "scholarshipsAvailable": true,
+    "_id": "60d21b4667d0d8992e610c80",
+    "bootcamp": "684f3bf3afb37d0ad8920e9b",
+    "user": "user1"
+  },
+  {
+    "title": "Python for Beginners",
+    "description": "Introductory Python programming course.",
+    "weeks": 6,
+    "tuition": 6000,
+    "minimumSkill": "beginner",
+    "scholarshipsAvailable": true,
+    "_id": "60d21b4667d0d8992e610c81",
+    "bootcamp": "684f3bf3afb37d0ad8920e9a",
+    "user": "user1"
+  },
+  {
+    "title": "Advanced Python",
+    "description": "Deep dive into advanced Python topics.",
+    "weeks": 10,
+    "tuition": 12000,
+    "minimumSkill": "advanced",
+    "scholarshipsAvailable": false,
+    "_id": "60d21b4667d0d8992e610c82",
+    "bootcamp": "684f3bf3afb37d0ad8920e9a",
+    "user": "user2"
+  },
+  {
+    "title": "Java Fundamentals",
+    "description": "Learn Java from scratch.",
+    "weeks": 8,
+    "tuition": 9000,
+    "minimumSkill": "beginner",
+    "scholarshipsAvailable": true,
+    "_id": "60d21b4667d0d8992e610c83",
+    "bootcamp": "684f3bf3afb37d0ad8920e9b",
+    "user": "user3"
+  },
+  {
+    "title": "Java Spring Boot",
+    "description": "Build REST APIs with Java Spring Boot.",
+    "weeks": 7,
+    "tuition": 9500,
+    "minimumSkill": "intermediate",
+    "scholarshipsAvailable": false,
+    "_id": "60d21b4667d0d8992e610c84",
+    "bootcamp": "684f3bf3afb37d0ad8920e9b",
+    "user": "user4"
+  },
+  {
+    "title": "Full Stack Python",
+    "description": "Python for web and backend development.",
+    "weeks": 12,
+    "tuition": 15000,
+    "minimumSkill": "intermediate",
+    "scholarshipsAvailable": true,
+    "_id": "60d21b4667d0d8992e610c85",
+    "bootcamp": "684f3bf3afb37d0ad8920e9a",
+    "user": "user5"
   }
 ]

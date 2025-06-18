@@ -7,6 +7,7 @@ const colors = require('colors');
 const errorHandler = require('./middleware/error');
 const bootcamps = require("./routes/bootcamps");
 const connectDB = require('./config/db');
+const courses = require("./routes/courses");
 
 // connect to db
 connectDB();
@@ -25,6 +26,7 @@ if(process.env.NODE_ENV === 'development')
 }
 
 app.use('/api/v1/bootcamps', bootcamps);
+app.use('/api/v1/courses', courses);
 
 app.use(errorHandler);
 
