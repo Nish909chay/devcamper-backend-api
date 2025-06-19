@@ -23,8 +23,7 @@
     },
     "createdAt": "2025-06-15T21:32:35.240Z",
     "__v": 0,
-    "zipcode" : "94105",
-    "averageCost" : 10000
+    "zipcode" : "94105"
   },
 
   {
@@ -51,7 +50,6 @@
     },
     "createdAt": "2025-06-15T21:32:35.240Z",
     "__v": 0,
-    "zipcode" : "10001",
-    "averageCost" : 15000
+    "zipcode" : "10001"
   }
 ]
