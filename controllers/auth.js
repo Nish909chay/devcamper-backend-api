@@ -68,3 +68,20 @@ const sendTokenResponse = (user, statusCode, res) => {
         token
     });
 }
+
+// get current logged in user
+// POST request to /api/v1/auth/me
+// private
+
+exports.getMe = asyncHandler(async (req, res, next) => {
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+        return next(new ErrorResponse(`User not found with id of ${req.user.id}`, 404));
+    }
+
+    res.status(200).json({
+        success: true,
+        data: user
+    });
+});

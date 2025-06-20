@@ -71,18 +71,14 @@ exports.updateBootcamp = asyncHandler(async (req,res,next) => {
 // DELETE request to /api/v1/bootcamps/:id
 // private 
 exports.deleteBootcamp = asyncHandler(async (req,res,next) => {
-
-    const bootcamp = await Bootcamp.findByIdAndDelete(req.params.id); {
-        
+    const bootcamp = await Bootcamp.findByIdAndDelete(req.params.id);
     if(!bootcamp)
     {
         return next(new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404));
     }
-
-    bootcamp.remove();
-    
+    // Use deleteOne instead of remove (for compatibility with latest Mongoose)
+    // await bootcamp.deleteOne(); // Not needed if using findByIdAndDelete
     res.status(200).json({success: true, data: {}});
-    }    
 });
 
 //  get botcamps within the range
