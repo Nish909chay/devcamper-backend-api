@@ -1,5 +1,7 @@
 const { reset } = require('colors');
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -12,7 +14,7 @@ const userSchema = new mongoose.Schema({
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,'Please use a valid email address']
     },
     role:{
-        type: string,
+        type: String,
         enum: ['user', 'publisher'],
         default: 'user'
     },
@@ -30,4 +32,23 @@ const userSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('User', userSchema);
+// encrypt password using bcrypt - middleware
+userSchema.pre('save', async function(next) {
+    const salt = await bcrypt.genSalt(10); 
+    this.password = await bcrypt.hash(this.password, salt);
+
+});
+
+// sign JWT token and return 
+userSchema.methods.getSignedJwtToken = function() {
+    return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRE
+    });
+}
+
+// match password
+userSchema.methods.matchPassword = async function(enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
+}
+
+module.exports = mongoose.model('User', userSchema)

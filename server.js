@@ -9,7 +9,9 @@ const errorHandler = require('./middleware/error');
 const bootcamps = require("./routes/bootcamps");
 const connectDB = require('./config/db');
 const courses = require("./routes/courses");
+const auth = require("./routes/auth");
 const fileupload = require('express-fileupload');
+const cookieParser = require('cookie-parser');
 
 // connect to db
 connectDB();
@@ -19,6 +21,9 @@ const app = express();  // initialize
 
 // body parser
 app.use(express.json());
+
+// ccookie parser
+app.use(cookieParser());
 
 
 // dev logging middleware
@@ -37,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1/bootcamps', bootcamps);
 app.use('/api/v1/courses', courses);
+app.use('/api/v1/auth', auth);
 
 app.use(errorHandler);
 
