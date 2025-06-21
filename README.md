@@ -2,6 +2,8 @@
 
 A robust RESTful API for bootcamp listings, courses, user authentication, reviews, and advanced querying. Built with Node.js, Express, MongoDB, and Mongoose.
 
+NOTE - This is only Backend build for learning purposes
+
 ---
 
 ## Table of Contents
