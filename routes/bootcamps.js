@@ -8,11 +8,14 @@ const {getBootcamp, getBootcamps, createBootcamp, updateBootcamp, deleteBootcamp
 const Bootcamp = require('../models/Bootcamp');
 const advancedResults = require('../middleware/advancedResults');
 
+
 // include other resource routers
 const courseRouter = require('./courses');
+const reviewRouter = require('./reviews');
 
 // re-route to other resource routers
 router.use('/:bootcampId/courses', courseRouter);
+router.use('/:bootcampId/reviews', reviewRouter);
 
 
 

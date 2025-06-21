@@ -21,7 +21,6 @@ exports.register = asyncHandler(async (req, res, next) => {
 
     sendTokenResponse(user, 201, res);
 
-
 });
 
 // Login user
@@ -68,6 +67,48 @@ exports.getMe = asyncHandler(async (req, res, next) => {
         data: user
     });
 });
+
+
+// update user detaiils
+//  PUT request to /api/v1/auth/me
+// private
+
+exports.updateDetails = asyncHandler(async (req, res, next) => {
+    const fieldsToUpdate = {
+        name: req.body.name,
+        email: req.body.email
+    };
+    const user = await User.findByIdAndUpdate(req.user.id, fieldsToUpdate, {
+        new: true,  
+        runValidators: true
+    });
+
+
+    res.status(200).json({
+        success: true,
+        data: user
+    });
+});
+
+// Update Password
+// PUT request to /api/v1/auth/updatepassword
+// private
+
+exports.updatepassword = asyncHandler(async (req, res, next) => {
+    const user = await User.findById(req.user.id).select('+password');
+
+    // check current password
+    if(!(await user.matchPassword(req.body.currentPassword))) {
+        return next(new ErrorResponse('Password is incorrect', 401));
+    }
+    // set new password
+    user.password = req.body.newPassword;
+    await user.save();
+    
+    sendTokenResponse(user, 200, res);
+});
+
+
 
 // forgot password
 // POST request to /api/v1/auth/forgotpassword
