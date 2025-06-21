@@ -2,7 +2,7 @@ const express = require('express');
 const {protect, authorize} = require('../middleware/auth');
 
 const {
-    getReviews, getReview
+    getReviews, getReview, addReview
         } = require('../controllers/reviews')
 
 const Review = require('../models/Review');
@@ -13,6 +13,7 @@ router.route('/').get(advancedResults(Review, {
                 path: 'bootcamp',
                 select: 'name description'
             }),getReviews)
+            .post(protect, authorize('user', 'admin'), addReview);
 
 router.route('/:id').get(getReview);
             

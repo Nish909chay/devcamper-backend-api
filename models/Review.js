@@ -35,6 +35,8 @@ const ReviewSchema = new mongoose.Schema({
 
 });
 
+ReviewSchema.index({ bootcamp: 1, user: 1 }, { unique: true });
+
 
 
 
