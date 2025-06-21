@@ -1,6 +1,6 @@
 [
   {
-    "_id": "684f3bf3afb37d0ad8920e9a",
+    "_id": "64a1f0c1e1a2b3c4d5e6f801",
     "name": "Python Bootcamp",
     "description": "Devworks is a full stack Python Bootcamp.",
     "website": "https://devworks.com",
@@ -23,11 +23,12 @@
     },
     "createdAt": "2025-06-15T21:32:35.240Z",
     "__v": 0,
-    "zipcode" : "94105"
+    "zipcode" : "94105",
+    "user": "64a1f0c1e1a2b3c4d5e6f701"
   },
 
   {
-    "_id": "684f3bf3afb37d0ad8920e9b",
+    "_id": "64a1f0c1e1a2b3c4d5e6f802",
     "name": "Java Bootcamp",
     "description": "Devworks is a full stack Java Bootcamp.",
     "website": "https://devworks.com",
@@ -50,6 +51,7 @@
     },
     "createdAt": "2025-06-15T21:32:35.240Z",
     "__v": 0,
-    "zipcode" : "10001"
+    "zipcode" : "10001",
+    "user": "64a1f0c1e1a2b3c4d5e6f702"
   }
 ]

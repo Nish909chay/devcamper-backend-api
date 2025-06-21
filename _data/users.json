@@ -1,8 +1,37 @@
 [
   {
+    "_id": "64a1f0c1e1a2b3c4d5e6f701",
     "name": "John Doe",
-    "email": "john@example.com",
+    "email": "john@gmail.com",
     "role": "user",
-    "password": "hashedpassword"
+    "password": "123456"
+  },
+  {
+    "_id": "64a1f0c1e1a2b3c4d5e6f702",
+    "name": "Jane Publisher",
+    "email": "jane@gmail.com",
+    "role": "publisher",
+    "password": "123456"
+  },
+  {
+    "_id": "64a1f0c1e1a2b3c4d5e6f703",
+    "name": "Alice Admin",
+    "email": "alice@gmail.com",
+    "role": "user",
+    "password": "123456"
+  },
+  {
+    "_id": "64a1f0c1e1a2b3c4d5e6f704",
+    "name": "Bob Manager",
+    "email": "bob@gmail.com",
+    "role": "publisher",
+    "password": "123456"
+  },
+  {
+    "_id": "64a1f0c1e1a2b3c4d5e6f705",
+    "name": "Charlie Guest",
+    "email": "charlie@gmail.com",
+    "role": "publisher",
+    "password": "123456"
   }
 ]

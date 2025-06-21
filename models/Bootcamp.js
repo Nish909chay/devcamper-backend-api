@@ -31,6 +31,11 @@ const BootcampSchema = new mongoose.Schema({
         type: String,
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,]
     },
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref:'User',
+        required: true
+      },
     address:   {
         type: String,
         required: [true, 'Please add an address']

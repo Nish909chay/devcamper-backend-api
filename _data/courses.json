@@ -7,8 +7,8 @@
     "minimumSkill": "beginner",
     "scholarshipsAvailable": true,
     "_id": "60d21b4667d0d8992e610c80",
-    "bootcamp": "684f3bf3afb37d0ad8920e9b",
-    "user": "user1"
+    "bootcamp": "64a1f0c1e1a2b3c4d5e6f802",
+    "user": "64a1f0c1e1a2b3c4d5e6f701"
   },
   {
     "title": "Python for Beginners",
@@ -18,8 +18,8 @@
     "minimumSkill": "beginner",
     "scholarshipsAvailable": true,
     "_id": "60d21b4667d0d8992e610c81",
-    "bootcamp": "684f3bf3afb37d0ad8920e9a",
-    "user": "user1"
+    "bootcamp": "64a1f0c1e1a2b3c4d5e6f801",
+    "user": "64a1f0c1e1a2b3c4d5e6f701"
   },
   {
     "title": "Advanced Python",
@@ -29,8 +29,8 @@
     "minimumSkill": "advanced",
     "scholarshipsAvailable": false,
     "_id": "60d21b4667d0d8992e610c82",
-    "bootcamp": "684f3bf3afb37d0ad8920e9a",
-    "user": "user2"
+    "bootcamp": "64a1f0c1e1a2b3c4d5e6f801",
+    "user": "64a1f0c1e1a2b3c4d5e6f702"
   },
   {
     "title": "Java Fundamentals",
@@ -40,8 +40,8 @@
     "minimumSkill": "beginner",
     "scholarshipsAvailable": true,
     "_id": "60d21b4667d0d8992e610c83",
-    "bootcamp": "684f3bf3afb37d0ad8920e9b",
-    "user": "user3"
+    "bootcamp": "64a1f0c1e1a2b3c4d5e6f802",
+    "user": "64a1f0c1e1a2b3c4d5e6f703"
   },
   {
     "title": "Java Spring Boot",
@@ -51,18 +51,7 @@
     "minimumSkill": "intermediate",
     "scholarshipsAvailable": false,
     "_id": "60d21b4667d0d8992e610c84",
-    "bootcamp": "684f3bf3afb37d0ad8920e9b",
-    "user": "user4"
-  },
-  {
-    "title": "Full Stack Python",
-    "description": "Python for web and backend development.",
-    "weeks": 12,
-    "tuition": 15000,
-    "minimumSkill": "intermediate",
-    "scholarshipsAvailable": true,
-    "_id": "60d21b4667d0d8992e610c85",
-    "bootcamp": "684f3bf3afb37d0ad8920e9a",
-    "user": "user5"
+    "bootcamp": "64a1f0c1e1a2b3c4d5e6f802",
+    "user": "64a1f0c1e1a2b3c4d5e6f704"
   }
 ]
